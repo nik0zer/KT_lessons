@@ -15,7 +15,7 @@ int main(int argc, char** argv, char** envp)
     }
     else
     {
-        for(int i = 0; i < 100; i++)
+        for(int i = 0; i < 1000; i++)
         {
             printf("%d\n", i);
         }
