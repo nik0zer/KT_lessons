@@ -6,7 +6,14 @@ int main()
 {
     int pid = 0;
     int ppid = 0;
+    int pidded = 0;
+    pidded = getpid();
+    fork();
     pid = getpid();
     ppid = getppid();
-    printf("procrid = %d\nparprocpid = %d", pid, ppid);
+    if(pidded == ppid)
+        printf("Child:\nprocrid = %d\nparprocpid = %d\n", pid, ppid);
+    else
+        printf("Parent:\nprocrid = %d\nparprocpid = %d\n", pid, ppid);
+    return 0;
 }
