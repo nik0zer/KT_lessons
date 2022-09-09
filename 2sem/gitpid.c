@@ -13,9 +13,9 @@ int main()
         pid = getpid();
         ppid = getppid();
         if(pidded == ppid)
-            printf("Child:\nprocrid = %d\nparprocpid = %d\n", pid, ppid);
+            printf("Child:\nproc_id = %d\npar_proc_id = %d\n", pid, ppid);
         else
-            printf("Parent:\nprocrid = %d\nparprocpid = %d\n", pid, ppid);
+            printf("Parent:\nproc_id = %d\npar_proc_id = %d\n", pid, ppid);
     }
     else
         printf("FORK_ERROR");
