@@ -1,0 +1,4 @@
+1800 nik
+600 gosha
+1900 sasha
+1000 herman
