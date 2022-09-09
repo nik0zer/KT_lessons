@@ -8,5 +8,5 @@ int main()
     int ppid = 0;
     pid = getpid();
     ppid = getppid();
-    printf("userid = %d\ngroupid = %d", pid, ppid);
+    printf("procrid = %d\nparprocpid = %d", pid, ppid);
 }
