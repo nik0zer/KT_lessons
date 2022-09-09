@@ -32,14 +32,14 @@ int main()
     int uid = 0;
     uid = getuid();
 
-    bool in_list = false;
+    int in_list = 0;
 
     for(int i = 0; i < num_of_users; i++)
     {
         if(ids[i].id == uid)
         {
             printf("Hello %s", ids[i].name);
-            in_list = true;
+            in_list = 1;
             break;
         }
     }
