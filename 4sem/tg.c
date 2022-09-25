@@ -36,7 +36,7 @@ int read_str(int fd, int num_of_client)
 int write_str(int fd, int num_of_client, char* str_to_write)
 {
     char *str_upd = (char*)calloc(strlen(str_to_write) + 100, sizeof(char));
-    sprintf(str_upd, "%d %s\0\n\0", num_of_client, str_to_write);
+    sprintf(str_upd, "%d %s\0", num_of_client, str_to_write);
     write(fd, str_upd, strlen(str_upd) + 1);
 }
 
