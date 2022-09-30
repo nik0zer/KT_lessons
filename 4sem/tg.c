@@ -5,8 +5,12 @@ int init_fifo()
     mkfifo(path, 0777);
 }
 
-int read_str(int fd, int num_of_client)
+int read_str(int fd, int num_of_client, int* flag_of_client, int* status)
 {
+    while (*status != 1)
+    {
+    }
+    
     char* read_str = (char*)calloc(10000, sizeof(char));
     for(int i = 0; i < 10000; i++)
     {  
@@ -19,24 +23,20 @@ int read_str(int fd, int num_of_client)
         if(read_str[i] == '\0')
             break;
     }
-    int num_of_read_client;
-    char* read_str_upd;
-    sscanf(read_str, "%d %ms" , &num_of_read_client, &read_str_upd);
-    if(num_of_read_client != num_of_client)
-    {
-        printf("from client %d\n%s\n", num_of_read_client, read_str_upd);
-    }
-    else
-    {
-        write_str(fd, num_of_client, read_str_upd);
-    }
+    read_str[10000 - 1] == '\0';
+    printf("from client %d\n%s\n", *flag_of_client, read_str);
     free(read_str);
+    *flag_of_client = -1;
 }
 
-int write_str(int fd, int num_of_client, char* str_to_write)
+int write_str(int fd, int num_of_client, char* str_to_write, int* flag_of_client, int* status)
 {
+    *status = 0;
+    *flag_of_client = num_of_client;
     char *str_upd = (char*)calloc(strlen(str_to_write) + 100, sizeof(char));
-    sprintf(str_upd, "%d %s\0", num_of_client, str_to_write);
+    sprintf(str_upd, "%s\0", str_to_write);
     write(fd, str_upd, strlen(str_upd) + 1);
+    free(str_upd);
+    *status = 1;
 }
 

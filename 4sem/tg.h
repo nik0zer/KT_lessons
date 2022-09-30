@@ -13,8 +13,8 @@ const char path[] = "tg.fifo";
 
 int init_fifo();
 
-int read_str(int fd, int num_of_client);
+int read_str(int fd, int num_of_client, int* flag_of_client, int* status);
 
-int write_str(int fd, int num_of_client, char* str_to_write);
+int write_str(int fd, int num_of_client, char* str_to_write, int* flag_of_client, int* status);
 
 #endif
