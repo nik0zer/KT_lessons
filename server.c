@@ -24,14 +24,6 @@ int init_server()
     
 }
 
-int read_from_all_clients()
-{
-    for(int i = 0; i < max_client_num; i++)
-    {
-        read_msg_from_client(msgid[i]);
-    }
-}
-
 int init_new_client()
 {
     if(max_client_num >= MAX_NUM_OF_CLIENT)
@@ -44,6 +36,14 @@ int init_new_client()
     *shm_ptr = max_client_num;
 
     max_client_num++;
+}
+
+int send_msg_to_client(int num_of_client, char* msg)
+{
+    msg_struct m;
+    m.type = 1;
+    memcpy(m.data, msg, strlen(msg));
+    msgsnd(msgid[num_of_client], &msg, sizeof(msg_struct) - sizeof(long), 0);
 }
 
 int read_msg_from_client(int msg_id)
@@ -64,10 +64,10 @@ int read_msg_from_client(int msg_id)
     }
 }
 
-int send_msg_to_client(int num_of_client, char* msg)
+int read_from_all_clients()
 {
-    msg_struct m;
-    m.type = 1;
-    memcpy(m.data, msg, strlen(msg));
-    msgsnd(msgid[num_of_client], &msg, sizeof(msg_struct) - sizeof(long), 0);
+    for(int i = 0; i < max_client_num; i++)
+    {
+        read_msg_from_client(msgid[i]);
+    }
 }
