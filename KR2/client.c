@@ -26,7 +26,6 @@ int main(int argc, char** argv)
     struct in_addr server_addr;
     struct in_addr client_addr[MAX_NUM_OF_CLIENTS];
     int curr_client_adr = 0;
-    inet_aton(argv[1], &server_addr);
 
     int network_socket;
 	network_socket = socket(AF_INET, SOCK_STREAM, 0);
